@@ -1,4 +1,4 @@
-
+import pandas as pd
 
 '''
     Requirements to perform calculation on the given data.
@@ -9,5 +9,15 @@
     3. Find employees distributed amoung regions.
 '''
 
+
+def calculate_employee_count_age_gt_30(df):
+    age_list = list(df['Age in Yrs.'])
+    new_age_list = [age for age in age_list if age>30]
+    return len(new_age_list)
+
+
 if __name__=='__main__':
-    pass
+    file_path = '/home/venugopal/Downloads/ins/projects/SamplePythonProject/app/employee_data.csv'
+    df = pd.read_csv(file_path)
+    employee_count = calculate_employee_count_age_gt_30(df)
+    print('There are %s employees whose age is greater than 30' % employee_count)
