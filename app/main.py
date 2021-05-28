@@ -22,6 +22,16 @@ def calculate_employee_count_age_gt_30(df):
     new_age_list = [age for age in age_list if age>30]
     return len(new_age_list)
 
+def get_employee_distribution(df):
+    region_list = list(df['Region'])
+    distribution_dict = {}
+    for region in region_list:
+        if region in distribution_dict:
+            distribution_dict[region] += 1
+        else:
+            distribution_dict[region] = 1
+    return distribution_dict
+
 
 if __name__=='__main__':
     file_path = '/home/venugopal/Downloads/ins/projects/SamplePythonProject/app/employee_data.csv'
@@ -32,3 +42,6 @@ if __name__=='__main__':
     #requirement 2
     new_df = calculate_employee_appraisals(df)
     new_df.to_csv(file_path, index=False)
+    #requirement 3
+    employee_distribution_dict = get_employee_distribution(df)
+    print(employee_distribution_dict)
