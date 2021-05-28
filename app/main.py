@@ -17,8 +17,18 @@ def calculate_employee_appraisals(df):
         df['new_salary'] = np.where(df['Salary']>100000, df['Salary']*1.1, df['Salary']*1.2)
     return df
 
+def calculate_employee_count_age_gt_30(df):
+    age_list = list(df['Age in Yrs.'])
+    new_age_list = [age for age in age_list if age>30]
+    return len(new_age_list)
+
+
 if __name__=='__main__':
     file_path = '/home/venugopal/Downloads/ins/projects/SamplePythonProject/app/employee_data.csv'
     df = pd.read_csv(file_path)
+    #requirement 1
+    employee_count = calculate_employee_count_age_gt_30(df)
+    print('There are %s employees whose age is greater than 30' % employee_count)
+    #requirement 2
     new_df = calculate_employee_appraisals(df)
     new_df.to_csv(file_path)
