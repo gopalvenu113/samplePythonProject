@@ -31,4 +31,4 @@ if __name__=='__main__':
     print('There are %s employees whose age is greater than 30' % employee_count)
     #requirement 2
     new_df = calculate_employee_appraisals(df)
-    new_df.to_csv(file_path)
+    new_df.to_csv(file_path, index=False)
